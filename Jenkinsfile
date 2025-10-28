@@ -3,13 +3,13 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        IMAGE_NAME = "adityayevate/demo-app"
+        IMAGE_NAME = "chetandodal/demo-app"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/adityayevate/devops-java-pipeline.git'
+                git branch: 'main', url: 'https://github.com/chetan07fan/devops-java-pipeline.git'
             }
         }
 
