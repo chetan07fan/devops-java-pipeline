@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven' // ✅ Name should match what you configured in Jenkins → Manage Jenkins → Tools → Maven installations
+    }
+
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         IMAGE_NAME = "chetandodal/demo-app"
@@ -15,7 +19,8 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                bat 'mvn clean package'
+                // ✅ Use Jenkins-configured Maven instead of raw 'mvn'
+                bat '"%MAVEN_HOME%\\bin\\mvn" clean package'
             }
         }
 
